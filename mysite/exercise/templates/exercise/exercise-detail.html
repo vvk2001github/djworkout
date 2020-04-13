@@ -1,0 +1,41 @@
+{% extends "main/base.html" %}
+
+{% block title %}Detail Exercise{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+<div class="row"></div>
+<br/>
+<div class="row">
+ <div class="col-md-1 col-xs-1 col-sm-1">
+    </div>
+ <div class="col-md-8 col-xs-8 col-sm-8">
+  <p class="h2">
+   {{exercise.title}}
+  </p>
+    </div>
+ <div class="col-md-1 col-xs-1 col-sm-1">
+  <a href="{% url 'exercise:edit' exercise.pk %}">
+   <button type="button" class="btn btn-info">
+    <i class="fa fa-pencil"></i>
+   </button>
+  </a>
+ </div>
+ <div class="col-md-1 col-xs-1 col-sm-1">
+  <a href="{% url 'exercise:delete' exercise.pk %}">
+   <button type="button" class="btn btn-danger">
+    <i class="fa fa-trash-o"></i>
+   </button>
+  </a>
+ </div>
+ <div class="col-md-1 col-xs-1 col-sm-1"></div>
+</div>
+<div class="row">
+ <div class="col-md-1 col-xs-1 col-sm-1"></div>
+ <div class="col-md-10 col-xs-10 col-sm-10">
+ {{exercise.get_types_display}}
+ </div>
+ <div class="col-md-1 col-xs-1 col-sm-1"></div>
+</div>
+</div>
+{% endblock %}
