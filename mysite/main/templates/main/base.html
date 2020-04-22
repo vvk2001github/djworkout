@@ -46,6 +46,7 @@
     <div class="sidenav">
 		<a href="/">Home</a>
 		{% if user.is_authenticated %}
+			<a href="/workouts">Workouts</a>
 			<a href="/exercise">Exercise</a>
 			<a href="/logout">Logout</a>
 		{% else %}

@@ -9,7 +9,7 @@ class Exercise(models.Model):
         ('LRW', 'LeftRight Weight')
     ]
 
-    userid = models.ForeignKey(User, on_delete=models.CASCADE)
+    userid = models.ForeignKey(User, on_delete=models.CASCADE, related_name='exercises')
     title = models.CharField(max_length = 120, help_text = 'Title of exercise.')
     types = models.CharField(max_length = 3, choices = EXTYPES)
 

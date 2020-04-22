@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     "crispy_forms",
     "register.apps.RegisterConfig",
     "main.apps.MainConfig",
-    "exercise.apps.ExerciseConfig"
+    "exercise.apps.ExerciseConfig",
+    "workouts.apps.WorkoutsConfig",
 ]
 
 MIDDLEWARE = [

@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("register/", v.register, name="register"),
     path('exercise/', include("exercise.urls", namespace='exercise')),
+    path('workouts/', include("workouts.urls", namespace='workouts')),
     path('', include("django.contrib.auth.urls")),
 ]
