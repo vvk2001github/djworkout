@@ -1,0 +1,56 @@
+{% extends "main/base.html" %}
+
+{% block title %}Workouts{% endblock %}
+
+{% block content %}
+<div class="container-fluid">    
+    
+    {% for workout in workouts_list %}
+    <div class="row border border-primary rounded">
+        <div class="col-sm-3 border border-primary rounded">
+            
+                    <a href="{% url 'workouts:index' %}">{{ workout.title }}</a>
+                
+        </div>   
+
+        
+        {% if workout.types == 'W' %}
+            <div class="col-sm-3 border border-primary rounded">Повторов:</div>
+            <div class="col-sm-3 border border-primary rounded"> {{ workout.c1}}</div>
+        {% endif %}
+
+        {% if workout.types == 'WW' %}
+            <div class="col-sm-2 border border-primary rounded">Повторов:</div>
+            <div class="col-sm-1 border border-primary rounded"> {{ workout.c1}}</div>
+            <div class="col-sm-2 border border-primary rounded">Вес:</div>
+            <div class="col-sm-1 border border-primary rounded"> {{ workout.w1}}</div>
+        {% endif %}
+
+        <div class="col-sm-1">
+            <a href="{% url 'workouts:index' %}">
+             <button type="button" class="btn btn-info">
+               <i class="fa fa-folder-open"></i>
+             </button>
+            </a>
+        </div>
+
+        <div class="col-sm-1">
+            <a href="{% url 'workouts:index' %}">
+             <button type="button" class="btn btn-info">
+               <i class="fa fa-pencil"></i>
+             </button>
+            </a>
+        </div>
+
+        <div class="col-sm-1">
+            <a href="{% url 'workouts:index' %}">
+             <button type="button" class="btn btn-danger">
+               <i class="fa fa-trash-o"></i>
+             </button>
+            </a>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
