@@ -1,0 +1,40 @@
+{% extends "main/base.html" %}
+
+{% block title %}Detail Workout{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row"></div>
+    <br/>
+    <div class = "row">
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+        <div class="col-md-8 col-xs-8 col-sm-8">
+            <p class="h2">
+                {{object.exid}}
+            </p>
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-1">
+            <a href="{% url 'workouts:detail' object.pk %}">
+                <button type="button" class="btn btn-info">
+                    <i class="fa fa-pencil"></i>
+                </button>
+            </a>
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-1">
+            <a href="{% url 'workouts:detail' object.pk %}">
+                <button type="button" class="btn btn-danger">
+                    <i class="fa fa-trash-o"></i>
+                </button>
+            </a>
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+    </div>
+
+    <div class = "row">
+        {% if object.exid.types == 'W' %}
+            <div class="col-sm-3 border border-primary rounded">Повторов:</div>
+            <div class="col-sm-3 border border-primary rounded"> </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
