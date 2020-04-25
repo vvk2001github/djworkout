@@ -11,5 +11,4 @@ def register(response):
 	else:
 		form = RegisterForm()
 
-	print(form)
 	return render(response, "register/register.html", {"form":form})
