@@ -12,3 +12,9 @@ class IndexView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         self.user = get_object_or_404(User, username = self.request.user)
         return Workouts.objects.raw('SELECT w.*, e.title, e.types FROM workouts_workouts w, exercise_exercise e, auth_user a where (w.exid_id = e.id)and(a.id = e.userid_id)and(a.username = %s)', [self.user.username])
+
+#Workout Detail View
+class WorkoutDetailView(LoginRequiredMixin, DetailView):
+    login_url = '/login/'
+    model=Workouts
+    template_name = 'workouts/work-detail.html'
