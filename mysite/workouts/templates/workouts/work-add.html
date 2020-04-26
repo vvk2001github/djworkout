@@ -34,6 +34,24 @@ $(document).ready(function() {
             $('#div_id_w2').hide();
         };
 
+        if(ex_type == 'LR') {
+            $('#div_id_c1').children("label").text('Повторов левых');
+            $('#div_id_w1').hide();
+            $('#div_id_c2').show();
+            $('#div_id_c2').children("label").text('Повторов правых');
+            $('#div_id_w2').hide();
+        };
+
+        if(ex_type == 'LRW') {
+            $('#div_id_c1').children("label").text('Повторов левых');
+            $('#div_id_w1').show();
+            $('#div_id_w1').children("label").text('Вес левый');
+            $('#div_id_c2').show();
+            $('#div_id_c2').children("label").text('Повторов правых');
+            $('#div_id_w2').show();
+            $('#div_id_w2').children("label").text('Вес правый');
+        };
+
     } );
 });
 </script>
