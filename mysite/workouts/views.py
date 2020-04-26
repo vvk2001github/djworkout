@@ -54,7 +54,13 @@ def edit(request, pk):
         tmp = Exercise.objects.filter(userid = user).values('id', 'types')
         for i in tmp:
             datadict[i['id']] = i['types']
-
-    
     return render(request, 'workouts/work-edit.html', {'form' : form, 'datadict' : datadict})
+
+@login_required(login_url='/login')
+def delete(request, pk):
+    workout = get_object_or_404(Workouts, pk=pk)    
+    if request.method=='POST':
+        workout.delete()
+        return redirect('workout:index')
+    return render(request, 'workouts/work-delete.html', {'object' : workout})
 
