@@ -14,7 +14,7 @@
             </p>
         </div>
         <div class="col-md-1 col-xs-1 col-sm-1">
-            <a href="{% url 'workouts:detail' object.pk %}">
+            <a href="{% url 'workouts:edit' object.pk %}">
                 <button type="button" class="btn btn-info">
                     <i class="fa fa-pencil"></i>
                 </button>
@@ -31,10 +31,57 @@
     </div>
 
     <div class = "row">
-        {% if object.exid.types == 'W' %}
-            <div class="col-sm-3 border border-primary rounded">Повторов:</div>
-            <div class="col-sm-3 border border-primary rounded"> </div>
-        {% endif %}
+        <table class="table  table-hover table-bordered">
+            <tbody>
+                {% if object.exid.types == 'W' %}
+                    <tr>                    
+                        <td>Повторов:</td>
+                        <td>{{object.c1}}</td>
+                    </tr>
+                {% endif %}
+
+                {% if object.exid.types == 'WW' %}
+                    <tr>                    
+                        <td>Повторов:</td>
+                        <td>{{object.c1}}</td>
+                    </tr>
+                    <tr>
+                        <td>Вес:</td>
+                        <td>{{object.w1}}</td>
+                    </tr>
+                {% endif %}
+
+                {% if object.exid.types == 'LR' %}
+                <tr>                    
+                    <td>Повторов левой:</td>
+                    <td>{{object.c1}}</td>
+                </tr>
+                <tr>
+                    <td>Повторов правой:</td>
+                    <td>{{object.c2}}</td>
+                </tr>
+                {% endif %}
+
+                {% if object.exid.types == 'LRW' %}
+                <tr>                    
+                    <td>Повторов левой:</td>
+                    <td>{{object.c1}}</td>
+                </tr>
+                <tr>                    
+                    <td>Вес левый:</td>
+                    <td>{{object.w1}}</td>
+                </tr>
+                <tr>
+                    <td>Повторов правой:</td>
+                    <td>{{object.c2}}</td>
+                </tr>
+                <tr>
+                    <td>Вес правый:</td>
+                    <td>{{object.w2}}</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
     </div>
 </div>
 {% endblock %}

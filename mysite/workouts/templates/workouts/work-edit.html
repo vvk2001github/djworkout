@@ -1,0 +1,59 @@
+{% extends "main/base.html" %}
+
+{% block title %}Edit Workout{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form method="POST" class="form-group">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+{% endblock %}
+
+{% block speccontent %}
+<script type='text/javascript'>
+var datadict = {{datadict|safe}};
+$(document).ready(function() {
+    
+    $("#id_exid").on("change", function(event) { 
+        ex_type = datadict[this.value];
+        if(ex_type == 'W') {
+            $('#div_id_c1').children("label").text('Повторов');
+            $('#div_id_w1').hide();
+            $('#div_id_c2').hide();
+            $('#div_id_w2').hide();
+        };
+
+        if(ex_type == 'WW') {
+            $('#div_id_c1').children("label").text('Повторов');
+            $('#div_id_w1').show();
+            $('#div_id_w1').children("label").text('Вес');
+            $('#div_id_c2').hide();
+            $('#div_id_w2').hide();
+        };
+
+        if(ex_type == 'LR') {
+            $('#div_id_c1').children("label").text('Повторов левых');
+            $('#div_id_w1').hide();
+            $('#div_id_c2').show();
+            $('#div_id_c2').children("label").text('Повторов правых');
+            $('#div_id_w2').hide();
+        };
+
+        if(ex_type == 'LRW') {
+            $('#div_id_c1').children("label").text('Повторов левых');
+            $('#div_id_w1').show();
+            $('#div_id_w1').children("label").text('Вес левый');
+            $('#div_id_c2').show();
+            $('#div_id_c2').children("label").text('Повторов правых');
+            $('#div_id_w2').show();
+            $('#div_id_w2').children("label").text('Вес правый');
+        };
+
+    } );
+
+    $("#id_exid").trigger('change');
+});
+</script>
+{% endblock %}

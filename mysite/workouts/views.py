@@ -24,7 +24,6 @@ class WorkoutDetailView(LoginRequiredMixin, DetailView):
 @login_required(login_url='/login')
 def workoutadd(request):
     if request.method == 'POST':
-        print(request.POST['exid'])
         form = WorkoutAddForm(request.POST, user=request.user)
         if form.is_valid():           
             form.save()
@@ -40,3 +39,22 @@ def workoutadd(request):
             datadict[i['id']] = i['types']
 
     return render(request, 'workouts/work-add.html', {'form' : form, 'datadict' : datadict})
+
+@login_required(login_url='/login')
+def edit(request, pk):
+    workout = get_object_or_404(Workouts, pk=pk)
+    form = WorkoutAddForm(request.POST or None, instance = workout, user=request.user)
+    if form.is_valid():
+        form.save()
+        return redirect('workouts:index')
+
+    datadict = dict()
+    if(request.user != None):
+        user = get_object_or_404(User, username = request.user)
+        tmp = Exercise.objects.filter(userid = user).values('id', 'types')
+        for i in tmp:
+            datadict[i['id']] = i['types']
+
+    
+    return render(request, 'workouts/work-edit.html', {'form' : form, 'datadict' : datadict})
+
