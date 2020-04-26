@@ -61,6 +61,6 @@ def delete(request, pk):
     workout = get_object_or_404(Workouts, pk=pk)    
     if request.method=='POST':
         workout.delete()
-        return redirect('workout:index')
+        return redirect('workouts:index')
     return render(request, 'workouts/work-delete.html', {'object' : workout})
 
