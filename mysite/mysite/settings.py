@@ -25,7 +25,7 @@ SECRET_KEY = '_tne4p($hx4djj_48__8=*em&w=h8)_pc_hoslgl3d*w@8dm$k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.2']
+ALLOWED_HOSTS = ['192.168.1.2', 'localhost']
 
 
 # Application definition
