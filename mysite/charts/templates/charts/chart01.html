@@ -5,10 +5,14 @@
 {% block content %}
 
 <table class="table  table-hover table-bordered">
+    <caption style="caption-side: top;">Праметры</caption>
     <tbody>
         {% for exercise in dataset1 %}
             <tr>
-                <td><a href="{% url 'charts:chart02' exercise.pk %}">{{exercise.title}}</a></td>
+                <td>{{exercise.title}}</td>
+                <td><a href="{% url 'charts:chartdetail' exercise.pk %}">Кол-во</a></td>
+                <td><a href="{% url 'charts:chartmax' exercise.pk %}">Максимальное кол-во</a></td>
+                <td><a href="{% url 'charts:chartsum' exercise.pk %}">Суммарное кол-во</a></td>
             </tr>
         {% endfor %}
     </tbody>

@@ -4,7 +4,9 @@ from . import views
 app_name='charts'
 urlpatterns = [
     path('', views.chart01, name='chart01'),
-    path('detail/<int:pk>', views.chart02, name='chart02'),
+    path('chartmax/<int:pk>', views.chartmax, name='chartmax'),
+    path('chartsum/<int:pk>', views.chartsum, name='chartsum'),
+    path('chartdetail/<int:pk>', views.chartdetail, name='chartdetail'),    
     #path('post/', views.workoutadd, name='post'),
     #path('<int:pk>/', views.WorkoutDetailView.as_view(), name='detail'),
     #path('edit/<int:pk>/', views.edit, name='edit'),

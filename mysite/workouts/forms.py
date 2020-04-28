@@ -1,3 +1,4 @@
+from datetime import date
 from django import forms
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
@@ -9,17 +10,9 @@ class WorkoutAddForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.username = kwargs.pop('user', None)
         super(WorkoutAddForm, self).__init__(*args, **kwargs)
-        #self.user = get_object_or_404(User, username = self.username)
         self.fields['exid'].queryset = Exercise.objects.filter(userid = self.username).order_by('title')
+        self.fields['time'].widget = forms.widgets.DateInput(attrs={'type': 'date', 'value' : date.today()})
          
     class Meta:
-        fields = ['exid', 'c1', 'w1', 'c2', 'w2']
+        fields = ['exid', 'c1', 'w1', 'c2', 'w2', 'time']
         model = Workouts
-
-    '''def clean(self):
-        # get the clean data 
-        cleaned_data = super(WorkoutAddForm, self).clean()
-        phoneprefix = cleaned_data
-        print(phoneprefix)
-
-        '''

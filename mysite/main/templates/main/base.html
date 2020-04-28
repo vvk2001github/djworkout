@@ -11,7 +11,7 @@
     <style type="text/css">
 		.sidenav {
 			height:100%;
-			width:160px;
+			width:180px;
 			position: fixed;
 			z-index:1;
 			top:0;
@@ -34,7 +34,7 @@
 		}	
  
 		.main{
-			margin-left:160px;
+			margin-left:180px;
 			padding: 0px 10px;
 		}
  
@@ -44,15 +44,15 @@
 
 <body>
     <div class="sidenav">
-		<a href="/">Home</a>
+		<a href="/">Домой</a>
 		{% if user.is_authenticated %}
-			<a href="/workouts">Workouts</a>
-			<a href="/exercise">Exercise</a>
-			<a href="/charts">Charts</a>
-			<a href="/logout">Logout</a>
+			<a href="/workouts">Занятия</a>
+			<a href="/exercise">Упражнения</a>
+			<a href="/charts">Графики</a>
+			<a href="/logout">Выход</a>
 		{% else %}
-			<a href="{% url 'register' %}">Register</a>
-			<a href="/login">Login</a>
+			<a href="{% url 'register' %}">Регистрация</a>
+			<a href="/login">Войти</a>
 		{% endif %}
 	</div>
     
@@ -61,7 +61,7 @@
 			<div class="col-12">
 				<h1 class="mt-2">
 					{% if user.is_authenticated %}
-						Hello, {{ user.username }}.
+						Привет, {{ user.username }}.
 					{% else %}
 						My Site
 					{% endif %}

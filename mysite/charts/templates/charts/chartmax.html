@@ -3,7 +3,7 @@
 {% block title %}Detail results{% endblock %}
 
 {% block content %}
-<div class="chart-container" style="position: relative; height:40vh; width:60vw">
+<div class="chart-container" style="position: relative; height:60vh; width:80vw">
     <canvas id="myChart"></canvas>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
@@ -16,7 +16,7 @@ var myChart = new Chart(ctx, {
         datasets: [{
             label: '{{exercise.title}}',
             data: {{data_list | safe}},
-            borderColor: '#ff0000',
+            borderColor: '#00ff00',
             fill: false,
             lineTension: 0,
         }],
@@ -25,8 +25,12 @@ var myChart = new Chart(ctx, {
         responsive: true,
         title: {
 					display: true,
-					text: 'Detail exercise'
+					text: 'Максимальное количество повторов'
 				},
+        tooltips: {
+			mode: 'index',
+			intersect: false,
+		},
         scales: {
 			xAxes: [{
 				display: true,
@@ -40,7 +44,10 @@ var myChart = new Chart(ctx, {
 				scaleLabel: {
 					display: true,
 					labelString: 'Количество'
-				}
+				},
+                ticks: {
+                    beginAtZero: true,
+                }
 			}]
         }
 

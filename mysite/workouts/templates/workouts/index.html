@@ -22,6 +22,7 @@
         <tbody>
         {% for workout in workouts_list %}
             <tr>
+                <td>{{workout.time}}</td>
                 <th scope="row"><a href="{% url 'workouts:detail' workout.pk %}">{{ workout.title }}</a></th>
                 {% if workout.types == 'LRW' %}
                     <td>ЛЕВ Повт.</td>
@@ -80,5 +81,20 @@
         {% endfor %}
         </tbody>
     </table>
+
+    {% if is_paginated %}
+    <div>
+        <nav aria-label="Page navigation conatiner"></nav>
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

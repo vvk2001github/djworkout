@@ -1,0 +1,58 @@
+{% extends "main/base.html" %}
+
+{% block title %}Kоличество {{exercise.title}} {% endblock %}
+
+{% block content %}
+<div class="chart-container" style="position: relative; height:60vh; width:80vw">
+    <canvas id="myChart"></canvas>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {{labels_list | safe }},
+        datasets: [{
+            label: '{{exercise.title}}',
+            data: {{data_list | safe}},
+            borderColor: '#00ff00',
+            fill: false,
+            lineTension: 0,
+        }],
+    },
+    options: {
+        responsive: true,
+        title: {
+					display: true,
+					text: 'Количество повторов'
+				},
+        tooltips: {
+			mode: 'index',
+			intersect: false,
+		},
+        scales: {
+			xAxes: [{
+				display: true,
+				scaleLabel: {
+					display: true,
+					labelString: 'Дата'
+				}
+			}],
+			yAxes: [{
+				display: true,
+				scaleLabel: {
+					display: true,
+					labelString: 'Количество'
+				},
+                ticks: {
+                    beginAtZero: true,
+                }
+			}]
+        }
+
+
+    }
+});
+</script>
+{% endblock %}
