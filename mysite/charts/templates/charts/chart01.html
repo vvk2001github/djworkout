@@ -5,9 +5,23 @@
 {% block content %}
 
 <table class="table  table-hover table-bordered">
-    <caption style="caption-side: top;">Параметры</caption>
+    <caption style="caption-side: top;">Упражнения без веса</caption>
     <tbody>
-        {% for exercise in dataset1 %}
+        {% for exercise in dataset_w %}
+            <tr>
+                <td>{{exercise.title}}</td>
+                <td><a href="{% url 'charts:chartdetail' exercise.pk %}">Кол-во</a></td>
+                <td><a href="{% url 'charts:chartmax' exercise.pk %}">Максимальное кол-во</a></td>
+                <td><a href="{% url 'charts:chartsum' exercise.pk %}">Суммарное кол-во</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<table class="table  table-hover table-bordered">
+    <caption style="caption-side: top;">Упражнения с весом</caption>
+    <tbody>
+        {% for exercise in dataset_ww %}
             <tr>
                 <td>{{exercise.title}}</td>
                 <td><a href="{% url 'charts:chartdetail' exercise.pk %}">Кол-во</a></td>

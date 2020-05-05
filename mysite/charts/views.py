@@ -9,7 +9,9 @@ from workouts.models import Workouts
 def chart01(request):
     """ Index """
     exercises_w = Exercise.objects.filter(userid=request.user).filter(types='W')
-    return render(request, 'charts/chart01.html', {'dataset1' : exercises_w})
+    exercises_ww = Exercise.objects.filter(userid=request.user).filter(types='WW')
+    return render(request, 'charts/chart01.html',
+                  {'dataset_w' : exercises_w, 'dataset_ww' : exercises_ww})
 
 @login_required(login_url='/login')
 def chartmax(request, pk_value):
