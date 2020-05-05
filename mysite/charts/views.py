@@ -8,8 +8,8 @@ from workouts.models import Workouts
 @login_required(login_url='/login')
 def chart01(request):
     """ Index """
-    exercises = Exercise.objects.filter(userid=request.user).filter(types='W')
-    return render(request, 'charts/chart01.html', {'dataset1' : exercises})
+    exercises_w = Exercise.objects.filter(userid=request.user).filter(types='W')
+    return render(request, 'charts/chart01.html', {'dataset1' : exercises_w})
 
 @login_required(login_url='/login')
 def chartmax(request, pk_value):
